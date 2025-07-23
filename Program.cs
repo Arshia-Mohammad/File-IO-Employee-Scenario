@@ -39,7 +39,7 @@ namespace File_IO_Employee_Scenario
                         emp.Searchbyid();
                         break;
                     case 4:
-                        emp.Savetofile(filepath);
+                        emp.SaveEmployeesToFile();
                         break;
                     case 5:
                         emp.LoadfromFile(filepath);

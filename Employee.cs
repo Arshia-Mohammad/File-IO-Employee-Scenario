@@ -17,21 +17,21 @@ namespace File_IO_Employee_Scenario
         public string Name { get; set; }
         public decimal Salary { get; set; }
 
-        public Employee()
-        {
-            empID = 0;
-            Name = "";
-            Salary = 0;
-        }
-        public Employee(int ID, string name, decimal salary)
-        {
-            empID = ID;
-            Name = name;
-            Salary = salary;
-        }
+        //public Employee()
+        //{
+        //    empID = 0;
+        //    Name = "";
+        //    Salary = 0;
+        //}
+        //public Employee(int ID, string name, decimal salary)
+        //{
+        //    empID = ID;
+        //    Name = name;
+        //    Salary = salary;
+        //}
 
         public static List<Employee> employees = new List<Employee>();
-         string filepath = "employees.txt"; // Default file path for saving employees
+         string filepath = "employee.txt"; // Default file path for saving employees
         public override string ToString()
         {
            return ($"Employee ID: {empID}, Name: {Name}, Salary: {Salary}");
@@ -52,10 +52,12 @@ namespace File_IO_Employee_Scenario
             string name = Console.ReadLine();
             Console.WriteLine("enter the employee salary ");
             decimal salary = Convert.ToDecimal(Console.ReadLine());
-            Employee emp = new Employee(id, name, salary);
-            employees.Add(emp);
-            emp.Savetofile(filepath);
-            Console.WriteLine("employee added successfully!");
+            this.empID = id;
+            this.Name = name;
+            this.Salary = salary;
+            employees.Add(this);
+            this.Savetofile(filepath);
+            Console.WriteLine("Employee added successfully!");
         }
 
         public void Viewall(List<Employee> employees)
