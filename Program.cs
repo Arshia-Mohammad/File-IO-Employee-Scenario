@@ -12,7 +12,6 @@ namespace File_IO_Employee_Scenario
         {
             Employee emp = new Employee();
             string filepath = "employee.txt";
-            //string filepath2 = "employee.json";
             while (true)
             {
                 Console.WriteLine("Enter the choice from the below menu");
@@ -25,9 +24,9 @@ namespace File_IO_Employee_Scenario
                 Console.WriteLine("7. Update");
                 Console.WriteLine("0. Exit");
                 Console.Write("Choose an option: ");
-                
+
                 int choice;
-                choice=Convert.ToInt32(Console.ReadLine());
+                choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
                     case 1:
@@ -36,18 +35,20 @@ namespace File_IO_Employee_Scenario
                     case 2:
                         emp.Viewall(Employee.employees);
                         break;
-                    case 3: emp.Searchbyid();
+                    case 3:
+                        emp.Searchbyid();
                         break;
-                    case 4: emp.Savetofile(filepath);
-                        Console.WriteLine("Data saved successfully!");
+                    case 4:
+                        emp.Savetofile(filepath);
                         break;
-                    //case 5: emp.LoadfromFile(filepath2);
-                    //    Console.WriteLine("Data loaded successfully!");
-                    //    break;
+                    case 5:
+                        emp.LoadfromFile(filepath);
+                        break;
                     case 6:
                         emp.Deletebyid();
                         break;
-                    case 7: emp.Updatebyid();
+                    case 7:
+                        emp.Updatebyid();
                         break;
                     case 0:
                         return;
@@ -59,3 +60,8 @@ namespace File_IO_Employee_Scenario
         }
     }
 }
+
+
+
+
+

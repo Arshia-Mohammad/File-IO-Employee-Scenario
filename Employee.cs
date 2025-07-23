@@ -23,7 +23,7 @@ namespace File_IO_Employee_Scenario
             Name = "";
             Salary = 0;
         }
-        public  Employee(int ID, string name, decimal salary)
+        public Employee(int ID, string name, decimal salary)
         {
             empID = ID;
             Name = name;
@@ -31,8 +31,7 @@ namespace File_IO_Employee_Scenario
         }
 
         public static List<Employee> employees = new List<Employee>();
-        string filepath = "employee.txt";
-
+         string filepath = "employees.txt"; // Default file path for saving employees
         public override string ToString()
         {
            return ($"Employee ID: {empID}, Name: {Name}, Salary: {Salary}");
@@ -121,25 +120,28 @@ namespace File_IO_Employee_Scenario
             }
         }
 
-        public void SaveEmployeesToFile(string filepath)
+        public void SaveEmployeesToFile()
         {
             var json = System.Text.Json.JsonSerializer.Serialize(employees); // Serialize the list of employees to a JSON string
             File.WriteAllText(filepath, json); // Write the JSON string to the file
             Console.WriteLine("Employees saved successfully.");
         }
-        //public void LoadfromFile(string filepath)
-        //{
-        //    if (File.Exists(filepath)) // Check if the file exists
-        //    {
-        //        var json = File.ReadAllText(filepath); // Read the JSON string from the file
-        //        //employees = System.Text.Json.JsonSerializer.Deserialize<List<Employee>>(json); // Deserialize the JSON string to a list of employees
-        //        //employees = Newtonsoft.Json.JsonSerializer<List<Employee>>(json)!;
-        //        Console.WriteLine("Employees loaded successfully.");
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("File not found. No employees loaded.");
-        //    }
-        //}
+        public void LoadfromFile(string filepath)
+        {
+            if (File.Exists(filepath)) // Check if the file exists
+            {
+                
+                var json = File.ReadAllText(filepath); // Read the JSON string from the file
+                employees = System.Text.Json.JsonSerializer.Deserialize<List<Employee>>(json); // Deserialize the JSON string to a list of employees
+                //employees = Newtonsoft.Json.JsonSerializer<List<Employee>>(json)!;
+                Console.WriteLine("Employees loaded successfully.");
+            }
+            else
+            {
+                Console.WriteLine("File not found. No employees loaded.");
+            }
+        }
+
+       
     }
 }
